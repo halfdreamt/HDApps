@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Magic: The Gathering Card Generator</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<style>
+		body {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+		}
+
+		.container {
+			max-width: 600px;
+			font-family: 'Montserrat', sans-serif;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 30px;
+		}
+
+		/* Square tile styles */
+		.tile {
+			padding: 0;
+			position: relative;
+			width: 100%;
+			height: 0;
+			padding-bottom: 100%;
+			margin-bottom: 20px;
+		}
+
+		/* Content styles */
+		.tile .content {
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: #ccc;
+			border-radius: 5px;
+			font-family: 'Montserrat', sans-serif;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+			text-align: center;
+		}
+
+		.tile .content:hover {
+			background-color: #ddd;
+		}
+
+		.tile p {
+			font-size: 24px;
+			font-weight: bold;
+			color: #333;
+			margin: 0;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<h1>Generated Cards</h1>
+		<button class="btn btn-outline-secondary" onclick="location.reload();" style="margin-top: 10px;">Refresh Page</button>
+		<form action="/MTGGen" method="post" target="_blank"
+			onsubmit="window.setTimeout(function(){location.reload()}, 1000);">
+			<div class="input-group mb-3">
+				<input type="text" class="form-control" placeholder="Enter card idea" name="cardIdea" required>
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary" type="submit">Generate Card</button>
+				</div>
+			</div>
+		</form>
+		<div class="row">
+			<% mtg_cards.forEach(function(card) { %>
+				<div class="col-4 col-sm-4">
+					<div class="tile">
+						<form action="/opencard" method="post" class="content" target="_blank">
+							<input type="hidden" name="cardName" value="<%= card.name %>">
+							<p>
+								<%= card.name %>
+							</p>
+							<button type="submit" style="display: none;"></button>
+						</form>
+					</div>
+				</div>
+				<% }); %>
+		</div>
+	</div>
+	<!-- Bootstrap JS -->
+	<script>
+		const tiles = document.querySelectorAll('.tile');
+		tiles.forEach(tile => {
+			tile.addEventListener('click', () => {
+				tile.querySelector('button[type="submit"]').click();
+			});
+		});
+	</script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.3/dist/umd/popper.min.js"
+		integrity="sha384-fuDHh9g0i0W8quv4E7hUPcJiwmMHtzdW8omvSjS9g/0Tk/zoYBbuKLBN/lWCUA5N"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>

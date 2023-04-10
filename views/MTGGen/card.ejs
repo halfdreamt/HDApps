@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= card.name %></title>
+    <style>
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            background-color: '#f0f0f0';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .italic {
+            font-style: italic;
+        }
+
+        .card {
+            max-width: 250px;
+            min-height: 350px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            padding: 10px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .name {
+            font-size: 14px;
+            text-align: left;
+        }
+
+        .mana-cost {
+            font-size: 12px;
+            text-align: right;
+        }
+
+        .image-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+
+        .image-box img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .types {
+            font-size: 12px;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        .text {
+            font-size: 10px;
+            text-align: left;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            flex-grow: 1;
+        }
+
+        .flavor-text {
+            font-size: 10px;
+            text-align: left;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .power-toughness {
+            font-size: 12px;
+            font-weight: bold;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="card" id="card">
+        <div class="name bold"><%= card.name %></div>
+        <div class="mana-cost"><%= card.manaCost %></div>
+        <div class="image-box">
+            <% if (card.imageUrl) { %>
+                <img src="<%= card.imageUrl %>" alt="Card image">
+            <% } else { %>
+                <span>Images coming soon!</span>
+            <% } %>
+        </div>
+        <div class="types">
+            <% 
+                const types = card.types.join(" ");
+                const subtypes = card.subtypes ? card.subtypes.join(" ") : "";
+                const typesLabel = subtypes ? types + " - " + subtypes : types;
+            %>
+            <%= typesLabel %>
+        </div>
+        <div>
+            <div class="text"><%= card.text %></div>
+            <div class="flavor-text italic"><%= card.flavorText %></div>
+            <div class="power-toughness"><%= card.power %> / <%= card.toughness %></div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('card').style.backgroundColor = '<%= backgroundColor %>';
+    </script>    
+</body>
+</html>
