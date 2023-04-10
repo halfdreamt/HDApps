@@ -1,5 +1,5 @@
 const assert = require('assert');
-const app = require('/app.js');
+const app = require('./app');
 const request = require('supertest')(app);
 
 describe('GET /', function() {
