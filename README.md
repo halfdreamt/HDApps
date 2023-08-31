@@ -30,6 +30,11 @@ The page can be accessed from http://localhost:3000 by default. After creating a
 
 <img width="265" alt="Screenshot 2023-08-31 at 11 55 50 AM" src="https://github.com/halfdreamt/HDApps/assets/31080937/a615e907-ef61-4894-9223-53c13d2aa91c">
 
+</br>
+
+<img width="263" alt="Screenshot 2023-08-31 at 11 57 32 AM" src="https://github.com/halfdreamt/HDApps/assets/31080937/a9db95f3-e793-42c7-8573-ba8276b743d0">
+
+
 
 ## License
 
