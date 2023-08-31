@@ -24,6 +24,13 @@ node app.js
 
 The page can be accessed from http://localhost:3000 by default. After creating an account (currently data is only stored locally, if running locally) MTG Generator can be selected from the menu. From there, the user can enter a desired card name or design, and the card will be displayed in a new tab. Older cards can also be opened from this initial page.
 
+<img width="655" alt="Screenshot 2023-08-31 at 11 55 59 AM" src="https://github.com/halfdreamt/HDApps/assets/31080937/67426a18-fbba-476c-86ad-cc312a2f09d2">
+
+</br>
+
+<img width="265" alt="Screenshot 2023-08-31 at 11 55 50 AM" src="https://github.com/halfdreamt/HDApps/assets/31080937/a615e907-ef61-4894-9223-53c13d2aa91c">
+
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
